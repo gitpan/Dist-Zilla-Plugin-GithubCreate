@@ -1,9 +1,10 @@
 package Dist::Zilla::Plugin::GithubCreate;
 BEGIN {
-  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.02';
+  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.03';
 }
 
 use Moose;
+use LWP::UserAgent;
 use File::Basename;
 
 use warnings;
@@ -33,7 +34,7 @@ Dist::Zilla::Plugin::GithubCreate - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -72,7 +73,7 @@ sub after_mint {
 	);
 
 	my $url 	= "$base_url/repos/create";
-	my $response 	= $browser -> request(POST $url, [public => !$self -> private]) -> as_string;
+	my $response 	= $browser -> post($url, [public => !$self -> private]) -> as_string;
 	my $status  	= (split / /,(split /\n/, $response)[0])[1];
 
 	if ($status == 401) {

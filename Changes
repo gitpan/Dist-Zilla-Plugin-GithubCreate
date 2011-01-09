@@ -2,7 +2,13 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
-  commit 0d080f031d9a4eb1fcbc7c0ca8a273b9ac9967f3
+  commit 2e586663b21d963ff9385e644122127e7b43487d
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:19:25 2011 +0100
+  
+    re-bump version
+
+  commit c078ad26263cbfe9297117423a266b5dcd51cccd
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sun Jan 9 21:12:00 2011 +0100
   

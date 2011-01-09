@@ -16,11 +16,12 @@ name: Dist-Zilla-Plugin-GithubCreate
 requires:
   Dist::Zilla::Role::AfterMint: 0
   File::Basename: 0
+  LWP::UserAgent: 0
   Moose: 0
 resources:
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GithubCreate/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GithubCreate.git
-version: 0.02
+version: 0.03
 x_Dist_Zilla:
   plugins:
     -

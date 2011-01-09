@@ -24,9 +24,10 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Dist::Zilla::Role::AfterMint' => '0',
     'File::Basename' => '0',
+    'LWP::UserAgent' => '0',
     'Moose' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }
