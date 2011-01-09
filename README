@@ -1,0 +1,13 @@
+
+
+This archive contains the distribution Dist-Zilla-Plugin-GithubCreate,
+version 0.01:
+
+  Create GitHub repo on dzil new
+
+This software is copyright (c) 2011 by Alessandro Ghedini.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+
