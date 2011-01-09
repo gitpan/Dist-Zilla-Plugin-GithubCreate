@@ -2,6 +2,40 @@
 9999-99-99 99:99:99 +0000 HEAD
 ==============================
 
+  commit 5420c2ad1b399485670cb01efa5baa1286eb3772
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:57:45 2011 +0100
+  
+    bump version
+
+  commit 7fcb7138344d70e1e86fadcf1d919dfc655f3c24
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:57:30 2011 +0100
+  
+    use login and token from gitconfig
+
+  commit 650bcc4464f65f4cae4e9bd533b38e4ab5820073
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:47:08 2011 +0100
+  
+    use HTTPS
+
+  commit cf9cfe8efc27df43e153100a01d7c18e1cdee672
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:46:55 2011 +0100
+  
+    mega fix
+
+  commit 6781589d38bf7845eae71632414e4a6941620d5b
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:23:24 2011 +0100
+  
+    some fix 
+
+===============================
+2011-01-09 21:19:25 +0100 v0.03
+===============================
+
   commit 2e586663b21d963ff9385e644122127e7b43487d
   Author: Alessandro Ghedini <al3xbio@gmail.com>
   Date:   Sun Jan 9 21:19:25 2011 +0100

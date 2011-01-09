@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GithubCreate;
 BEGIN {
-  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.03';
+  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.04';
 }
 
 use Moose;
@@ -22,7 +22,7 @@ has token => (
 	isa  	=> 'Str',
 );
 
-has private => (
+has public => (
 	is   	=> 'ro',
 	isa  	=> 'Bool',
 	default	=> 1
@@ -34,7 +34,7 @@ Dist::Zilla::Plugin::GithubCreate - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -42,7 +42,7 @@ In your F<profile.ini>:
 
     [GithubCreate]
     login  = LoginName
-    token  = asd324asd34fdqs23d432cf4q
+    token  = GitHubToken
     public = 1
 
 =head1 DESCRIPTION
@@ -56,24 +56,42 @@ sub after_mint {
 	my $self 	= shift;
 	my ($opts) 	= @_;
 	my $repo_name 	= basename($opts -> {mint_root});
-	my $base_url	= 'http://github.com/api/v2/json';
+	my $base_url	= 'https://github.com/api/v2/json';
+	my ($login, $token);
+
+	if ($self -> login) {
+		$login = $self -> login;
+	} else {
+		$login = `git config github.user`;
+	}
+
+	if ($self -> token) {
+		$token = $self -> token;
+	} else {
+		$token = `git config github.token`;
+	}
+
+	chomp $login; chomp $token;
 
 	$self -> log("Creating new GitHub repository '$repo_name'");
 
-	if (!$self -> login || !$self -> token) {
+	if (!$login || !$token) {
 		$self -> log("Err: Provide valid GitHub login values");
 		return;
 	}
 
 	my $browser = LWP::UserAgent -> new;
-	$browser -> credentials(
-		'github.com:80',
-		'',
-		$self -> login.'/token' => $self -> token
+
+	my %params = (
+		'login'		=> $login,
+		'token'		=> $token,
+		'name'		=> $repo_name,
+		'public'	=> $self -> public
 	);
 
+
 	my $url 	= "$base_url/repos/create";
-	my $response 	= $browser -> post($url, [public => !$self -> private]) -> as_string;
+	my $response 	= $browser -> post($url, [%params]) -> as_string;
 	my $status  	= (split / /,(split /\n/, $response)[0])[1];
 
 	if ($status == 401) {
@@ -87,11 +105,17 @@ sub after_mint {
 
 =item C<login>
 
-The GitHub login name. It is required.
+The GitHub login name. If not provided, will be used the value of
+C<github.user> from the Git configuration, to set it, type:
+
+    $ git config --global github.user LoginName
 
 =item C<token>
 
-The GitHub API token for the user. It is required.
+The GitHub API token for the user. If not provided, will be used the
+value of C<github.token> from the Git configuration, to set it, type:
+
+    $ git config --global github.token GitHubToken
 
 =item C<public>
 
