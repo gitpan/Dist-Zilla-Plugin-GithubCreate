@@ -1,10 +1,9 @@
 package Dist::Zilla::Plugin::GithubCreate;
 BEGIN {
-  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.01';
+  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.02';
 }
 
 use Moose;
-use Net::GitHub;
 use File::Basename;
 
 use warnings;
@@ -22,21 +21,28 @@ has token => (
 	isa  	=> 'Str',
 );
 
+has private => (
+	is   	=> 'ro',
+	isa  	=> 'Bool',
+	default	=> 1
+);
+
 =head1 NAME
 
 Dist::Zilla::Plugin::GithubCreate - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
 In your F<profile.ini>:
 
     [GithubCreate]
-    login = LoginName
-    token = asd324asd34fdqs23d432cf4q
+    login  = LoginName
+    token  = asd324asd34fdqs23d432cf4q
+    public = 1
 
 =head1 DESCRIPTION
 
@@ -49,6 +55,7 @@ sub after_mint {
 	my $self 	= shift;
 	my ($opts) 	= @_;
 	my $repo_name 	= basename($opts -> {mint_root});
+	my $base_url	= 'http://github.com/api/v2/json';
 
 	$self -> log("Creating new GitHub repository '$repo_name'");
 
@@ -57,19 +64,20 @@ sub after_mint {
 		return;
 	}
 
-	my $github = Net::GitHub -> new(
-		owner => $self -> login,
-		repo  => $repo_name,
-		login => $self -> login,
-		token => $self -> token
+	my $browser = LWP::UserAgent -> new;
+	$browser -> credentials(
+		'github.com:80',
+		'',
+		$self -> login.'/token' => $self -> token
 	);
 
-	$github -> repos -> create(
-		$repo_name,
-		'',
-		'http://search.cpan.org/dist/$repo_name',
-		1
-	);
+	my $url 	= "$base_url/repos/create";
+	my $response 	= $browser -> request(POST $url, [public => !$self -> private]) -> as_string;
+	my $status  	= (split / /,(split /\n/, $response)[0])[1];
+
+	if ($status == 401) {
+		$self -> log("Err: Not authorized");
+	}
 }
 
 =head1 ATTRIBUTES
@@ -84,6 +92,10 @@ The GitHub login name. It is required.
 
 The GitHub API token for the user. It is required.
 
+=item C<public>
+
+Create a public repository if this is '1' (default), else create a private one.
+
 =back
 
 =head1 AUTHOR
@@ -93,7 +105,7 @@ Alessandro Ghedini <alexbio@cpan.org>
 =head1 BUGS
 
 Please report any bugs or feature requests at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Dist-Zilla-Plugin-GithubCreate>.
-I will be notified, and then you'll automatically be notified of progress 
+I will be notified, and then you'll automatically be notified of progress
 on your bug as I make changes.
 
 =head1 SUPPORT

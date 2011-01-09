@@ -17,11 +17,10 @@ requires:
   Dist::Zilla::Role::AfterMint: 0
   File::Basename: 0
   Moose: 0
-  Net::GitHub: 0
 resources:
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GithubCreate/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GithubCreate.git
-version: 0.01
+version: 0.02
 x_Dist_Zilla:
   plugins:
     -
@@ -108,6 +107,10 @@ x_Dist_Zilla:
       class: Dist::Zilla::Plugin::ChangelogFromGit
       name: ChangelogFromGit
       version: 0.002
+    -
+      class: Dist::Zilla::Plugin::GithubUpdate
+      name: GithubUpdate
+      version: 0.01
     -
       class: Dist::Zilla::Plugin::Git::Tag
       name: Git::Tag

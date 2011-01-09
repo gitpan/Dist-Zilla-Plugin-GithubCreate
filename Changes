@@ -1,3 +1,43 @@
+==============================
+9999-99-99 99:99:99 +0000 HEAD
+==============================
+
+  commit 0d080f031d9a4eb1fcbc7c0ca8a273b9ac9967f3
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:12:00 2011 +0100
+  
+    fix error in LWP::userAgent usage
+
+  commit fdb07ecd21d9e30254848575ba5830db054402bc
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 21:10:12 2011 +0100
+  
+    add Github::Update in dist.ini
+
+  commit 42d7eb02bf40c57924954f4019591f6f87c3e9ea
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 20:38:57 2011 +0100
+  
+    bumpd version
+
+  commit 875c3772b0c8826b6cb59a3d6f925ace06a46f20
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 20:50:18 2011 +0100
+  
+    allow private repository creation
+
+  commit a84d152e83ac8bf4680fc253447f801863818038
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 20:38:47 2011 +0100
+  
+    drop Net::GitHub use bare LWP::UserAgent instead
+
+  commit 097a183a78e30ce4a64671700bae2edb10273e37
+  Author: Alessandro Ghedini <al3xbio@gmail.com>
+  Date:   Sun Jan 9 18:41:13 2011 +0100
+  
+    remove Git::Check from dist.ini 
+
 ===================================
 End of changes in the last 365 days
 ===================================

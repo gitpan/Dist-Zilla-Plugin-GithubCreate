@@ -23,8 +23,7 @@
          "requires" : {
             "Dist::Zilla::Role::AfterMint" : 0,
             "File::Basename" : 0,
-            "Moose" : 0,
-            "Net::GitHub" : 0
+            "Moose" : 0
          }
       },
       "test" : {
@@ -42,7 +41,7 @@
          "web" : "https://github.com/AlexBio/Dist-Zilla-Plugin-GithubCreate"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -149,6 +148,11 @@
             "class" : "Dist::Zilla::Plugin::ChangelogFromGit",
             "name" : "ChangelogFromGit",
             "version" : "0.002"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::GithubUpdate",
+            "name" : "GithubUpdate",
+            "version" : "0.01"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",

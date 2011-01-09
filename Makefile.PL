@@ -24,10 +24,9 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Dist::Zilla::Role::AfterMint' => '0',
     'File::Basename' => '0',
-    'Moose' => '0',
-    'Net::GitHub' => '0'
+    'Moose' => '0'
   },
-  'VERSION' => '0.01',
+  'VERSION' => '0.02',
   'test' => {
     'TESTS' => 't/*.t'
   }
