@@ -1,6 +1,6 @@
 package Dist::Zilla::Plugin::GithubCreate;
 BEGIN {
-  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.04';
+  $Dist::Zilla::Plugin::GithubCreate::VERSION = '0.05';
 }
 
 use Moose;
@@ -34,7 +34,7 @@ Dist::Zilla::Plugin::GithubCreate - Create GitHub repo on dzil new
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 

@@ -42,7 +42,7 @@
          "web" : "https://github.com/AlexBio/Dist-Zilla-Plugin-GithubCreate"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

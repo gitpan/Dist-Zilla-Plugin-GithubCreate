@@ -21,7 +21,7 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-GithubCreate/
   repository: git://github.com/AlexBio/Dist-Zilla-Plugin-GithubCreate.git
-version: 0.04
+version: 0.05
 x_Dist_Zilla:
   plugins:
     -
